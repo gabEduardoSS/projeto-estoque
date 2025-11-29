@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 
-public class conexaoDB {
+public class ConexaoDB {
     private static final String URL = "jdbc:mysql://localhost:3306/db_estoque";
     private static final String usuario = "root";
     private static final String senha = "rootPass";
 
-    public static Connection conectar(){
+    public Connection conectar(){
         Connection conexao = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,7 +29,7 @@ public class conexaoDB {
         return conexao;
     }
 
-    private static void fecharConexao(Connection conexao){
+    private void fecharConexao(Connection conexao){
         if(conexao != null){
             try {
                 conexao.close();
@@ -41,7 +41,7 @@ public class conexaoDB {
         }
     }
 
-    public static List<Map<String, String>> select(String query){
+    public List<Map<String, String>> select(String query){
         List<Map<String, String>> registros = new ArrayList<>();
         try(Connection conexao = conectar(); PreparedStatement prepararQuery = conexao.prepareStatement(query);
             ResultSet resultado = prepararQuery.executeQuery()) {
@@ -58,26 +58,24 @@ public class conexaoDB {
                     registros.add(linha);
                 }
             }
-            fecharConexao(conexao);
         } catch(SQLException e) {
             System.err.println("Erro ao selecionar: " + e.getMessage());
         }
         return registros;
     }
 
-    public static void alterQuery(String query){
-        try(Connection conexao = conectar(); PreparedStatement prepararQuery = conexao.prepareStatement(query);) {
+    public void alterQuery(Connection conexao, String query){
+        try(PreparedStatement prepararQuery = conexao.prepareStatement(query);) {
 
         } catch(SQLException e){
             System.err.println("Erro ao inserir: " + e.getMessage());
         }
     }
 
-    public static boolean validarLogin(String usuario, String senha){
+    public boolean validarLogin(Connection conexao, String usuario, String senha){
         String query = "SELECT * FROM usuario WHERE nome = ? AND senhaHash = ?";
 
-        try (Connection conexao = conectar();
-             PreparedStatement st = conexao.prepareStatement(query)) {
+        try (PreparedStatement st = conexao.prepareStatement(query)) {
 
             st.setString(1, usuario);
             st.setString(2, senha);
