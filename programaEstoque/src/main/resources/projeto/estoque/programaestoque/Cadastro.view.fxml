@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.shape.Line?>
+<VBox alignment="TOP_CENTER" prefHeight="490.0" prefWidth="428.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      stylesheets="@estilos/default.css, @estilos/cadastro-produto.css" fx:controller="projeto.estoque.programaestoque.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <Label fx:id="lblAviso"/>
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="150" prefWidth="388.0">
+            <children>
+                <Label prefHeight="50.0" text="Cadastro de Produtos">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="388.0">
+                    <children>
+                        <Label prefHeight="24.0" prefWidth="45.0" text="Nome: " />
+                        <TextField fx:id="tfProduto" prefHeight="25.0" prefWidth="344.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="388.0">
+                    <children>
+                        <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="118.0" text="Unidade de Medida:" />
+                        <TextField fx:id="tfUnidadeMedida" prefHeight="25.0" prefWidth="59.0" />
+                        <Separator opacity="0.0" prefHeight="13.0" prefWidth="14.0" />
+                        <Button mnemonicParsing="false" onAction="#CriarProduto" prefHeight="25.0" prefWidth="185.0" text="Criar Produto" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <Separator prefWidth="200"/>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <children>
+                <Label text="Controle de Estoque">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
+                <HBox alignment="BOTTOM_LEFT" prefHeight="47.0" prefWidth="388.0">
+                    <children>
+                        <Label prefHeight="25.0" prefWidth="53.0" text="Produto:" />
+                        <ComboBox fx:id="cbProduto" prefHeight="25.0" prefWidth="339.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="388.0">
+                    <children>
+                        <Label prefHeight="25.0" prefWidth="75.0" text="Quantidade: " />
+                        <TextField fx:id="tfQuantidade" prefHeight="25.0" prefWidth="65.0" />
+                        <Separator opacity="0.0" prefHeight="22.0" prefWidth="13.0" />
+                        <Label fx:id="lblObservacao" contentDisplay="CENTER" prefHeight="25.0" prefWidth="244.0" text="Disponível:     Unidade de Medida:  " />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="48.0" prefWidth="388.0">
+                    <children>
+                        <Button fx:id="btnAdicionar" mnemonicParsing="false" prefWidth="150.0" text="Adicionar" />
+                        <Separator opacity="0.0" prefHeight="27.0" prefWidth="17.0" />
+                        <Button styleClass="btn-remover" fx:id="btnRemover" mnemonicParsing="false" prefWidth="150.0" text="Remover" />
+                    </children>
+                </HBox>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="317.0" text="Mostrar Estoque" />
+            </children></VBox>
+    </children>
+</VBox>

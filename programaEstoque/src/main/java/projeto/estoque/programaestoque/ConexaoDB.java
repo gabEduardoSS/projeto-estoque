@@ -1,5 +1,7 @@
 package projeto.estoque.programaestoque;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -12,7 +14,9 @@ public class ConexaoDB {
     private static final String usuario = "root";
     private static final String senha = "rootPass";
 
-    public Connection conectar(){
+    public static Connection conexao = conectar();
+
+    public static Connection conectar(){
         Connection conexao = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -86,6 +90,24 @@ public class ConexaoDB {
 
         } catch (SQLException e) {
             System.err.println("Erro ao validar login: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public Boolean adicionarProduto(Connection conexao, String nome, String unidadeMedida){
+        String query = "INSERT INTO produto(nome, unidade_medida, quantidade) VALUES (?, ?, 0)";
+
+        try (PreparedStatement st = conexao.prepareStatement(query)) {
+
+            st.setString(1, nome);
+            st.setString(2, unidadeMedida);
+
+            int rs = st.executeUpdate();
+
+            return rs > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao adicionar o produto: " + e.getMessage());
             return false;
         }
     }
