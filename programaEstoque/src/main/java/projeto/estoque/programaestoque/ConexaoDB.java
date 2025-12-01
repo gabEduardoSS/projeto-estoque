@@ -16,6 +16,7 @@ public class ConexaoDB {
 
     public static Connection conexao = conectar();
 
+
     public static Connection conectar(){
         Connection conexao = null;
         try {
@@ -45,35 +46,25 @@ public class ConexaoDB {
         }
     }
 
-    public List<Map<String, String>> select(String query){
+    public List<Map<String, String>> select(Connection conexao, String query){
         List<Map<String, String>> registros = new ArrayList<>();
-        try(Connection conexao = conectar(); PreparedStatement prepararQuery = conexao.prepareStatement(query);
+        try(PreparedStatement prepararQuery = conexao.prepareStatement(query);
             ResultSet resultado = prepararQuery.executeQuery()) {
             int quantidadeCol = resultado.getMetaData().getColumnCount();
 
-            if(resultado.next()){
-                while(resultado.next()){
-                    Map<String, String> linha = new LinkedHashMap<>();
-                    for (int col = 1; col <= resultado.getMetaData().getColumnCount(); col++) {
-                        String coluna = resultado.getMetaData().getColumnName(col);
-                        String valor = resultado.getString(col);
-                        linha.put(coluna, valor);
-                    }
-                    registros.add(linha);
+            while (resultado.next()) {
+                Map<String, String> linha = new LinkedHashMap<>();
+                for (int col = 1; col <= quantidadeCol; col++) {
+                    String coluna = resultado.getMetaData().getColumnName(col);
+                    String valor = resultado.getString(col);
+                    linha.put(coluna, valor);
                 }
+                registros.add(linha);
             }
         } catch(SQLException e) {
             System.err.println("Erro ao selecionar: " + e.getMessage());
         }
         return registros;
-    }
-
-    public void alterQuery(Connection conexao, String query){
-        try(PreparedStatement prepararQuery = conexao.prepareStatement(query);) {
-
-        } catch(SQLException e){
-            System.err.println("Erro ao inserir: " + e.getMessage());
-        }
     }
 
     public boolean validarLogin(Connection conexao, String usuario, String senha){
@@ -108,6 +99,42 @@ public class ConexaoDB {
 
         } catch (SQLException e) {
             System.err.println("Erro ao adicionar o produto: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public List<Map<String, String>> pegarProdutos(Connection conexao){
+        String query = "SELECT * FROM produto";
+        return select(conexao, query);
+    }
+
+    public boolean removerProduto(Connection conexao, int idProduto) {
+        String query = "DELETE FROM produto WHERE id_produto = ?";
+
+        try (PreparedStatement st = conexao.prepareStatement(query)) {
+            st.setInt(1, idProduto);
+
+            int linhasAfetadas = st.executeUpdate();
+            return linhasAfetadas > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao remover o produto: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean alterarQuantidadeProduto(Connection conexao, int idProduto, int novaQuantidade) {
+        String query = "UPDATE produto SET quantidade = ? WHERE id_produto = ?";
+
+        try (PreparedStatement st = conexao.prepareStatement(query)) {
+            st.setInt(1, novaQuantidade);
+            st.setInt(2, idProduto);
+
+            int linhasAfetadas = st.executeUpdate();
+            return linhasAfetadas > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao alterar a quantidade do produto: " + e.getMessage());
             return false;
         }
     }

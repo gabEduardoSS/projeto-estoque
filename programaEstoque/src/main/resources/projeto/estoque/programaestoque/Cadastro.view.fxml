@@ -60,12 +60,12 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="48.0" prefWidth="388.0">
                     <children>
-                        <Button fx:id="btnAdicionar" mnemonicParsing="false" prefWidth="150.0" text="Adicionar" />
+                        <Button onAction="#alterarQuantidade" fx:id="btnAdicionar" mnemonicParsing="false" prefWidth="150.0" text="Alterar quantidade" />
                         <Separator opacity="0.0" prefHeight="27.0" prefWidth="17.0" />
-                        <Button styleClass="btn-remover" fx:id="btnRemover" mnemonicParsing="false" prefWidth="150.0" text="Remover" />
+                        <Button onAction="#remover" styleClass="btn-remover" fx:id="btnRemover" mnemonicParsing="false" prefWidth="150.0" text="Remover" />
                     </children>
                 </HBox>
-                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="317.0" text="Mostrar Estoque" />
+                <Button onAction="#extrato" mnemonicParsing="false" prefHeight="25.0" prefWidth="317.0" text="Mostrar Estoque" />
             </children></VBox>
     </children>
 </VBox>
