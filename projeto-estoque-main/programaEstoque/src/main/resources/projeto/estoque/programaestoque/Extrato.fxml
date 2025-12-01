@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="413.0" prefWidth="541.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1"
+      stylesheets="estilos/Extrato.css" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="projeto.estoque.programaestoque.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <Label styleClass="labelEXT" text="Extratos dos produtos" />
+    <TableView styleClass="labelVIEW" prefHeight="200.0" prefWidth="224.0">
+        <columns>
+            <TableColumn styleClass="labelTAB" prefWidth="75.0" text="Nome" />
+            <TableColumn styleClass="labelTAB" prefWidth="75.0" text="ID" />
+            <TableColumn styleClass="labelTAB" prefWidth="66.0" text="UN" />
+            <TableColumn styleClass="labelTAB" prefWidth="75.0" text="Quantidade" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+    <Button text="Retornar" />
+</VBox>

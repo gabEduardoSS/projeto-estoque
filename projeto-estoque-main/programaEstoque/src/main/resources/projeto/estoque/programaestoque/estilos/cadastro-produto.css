@@ -1,0 +1,8 @@
+.btn-remover {
+    -fx-background-color: #d64545;
+    -fx-text-fill: white;
+}
+
+.btn-remover:hover {
+    -fx-background-color: #FA4646;
+}

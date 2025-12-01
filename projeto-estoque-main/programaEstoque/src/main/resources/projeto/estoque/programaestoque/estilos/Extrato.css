@@ -1,0 +1,35 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #3884E0;
+    -fx-font-weight: bold;
+}
+
+.labelEXT {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 25;
+}
+
+.labelTAB{
+    -fx-background-color: #b5b5b5;
+    -fx-text-fill: white;
+}
+
+.labelVIEW {
+    -fx-background-color: #dcdcdc;
+    -fx-border-width: 2;
+    -fx-border-color: white;
+}
+
+.button{
+    -fx-border-width: 0;
+    -fx-background-color: #d64545;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5 5;
+    -fx-pref-width: 70;
+}
+
+.button:hover{
+    -fx-background-color: #FA4646;
+}

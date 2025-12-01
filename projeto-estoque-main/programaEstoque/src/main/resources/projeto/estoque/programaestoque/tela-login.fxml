@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="280" prefWidth="320" spacing="10.0" stylesheets="@estilos/default.css, @estilos/tela-login.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.estoque.programaestoque.ControlerLogin">
+    <padding>
+        <Insets bottom="40" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="lblAviso" />
+    <Label styleClass="lbl-login" text="LOGIN" />
+    <VBox maxWidth="200" spacing="3.0">
+        <Label styleClass="lbl-textfield" text="Usuário" />
+        <TextField fx:id="tfUsuario" promptText="Usuário" />
+    </VBox>
+    <VBox maxWidth="200" spacing="3.0">
+        <Label styleClass="lbl-textfield" text="Senha" />
+        <PasswordField fx:id="tfSenha" promptText="Senha" />
+    </VBox>
+    <Button fx:id="btnEntrar" onAction="#logar" maxWidth="200" prefHeight="20" prefWidth="200.0" styleClass="btn-entrar" text="ENTRAR">
+      <VBox.margin>
+         <Insets top="10.0" />
+      </VBox.margin></Button>
+</VBox>
