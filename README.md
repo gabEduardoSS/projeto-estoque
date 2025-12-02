@@ -8,7 +8,7 @@
 
 <p>Cadastro de produtos: na página inicial possui um campo para cadastro de produtos, informe o nome do item que será cadastrado e a unidade de medida que utilizará para controlá-lo, em seguida, clique em criar produto para cadastrá-lo no sistema, caso o produto já tenha sido cadastrado uma vez, não é necessário repetir o processo.</p>
 
-<p>Controle de estoque: na página inicial possui um campo de controle de estoque, selecione o produto que deseja utilizar ou adicionar ao estoque, assim que selecionado, o sistema informa a quantidade em estoque e a unidade de medida, insira a quantidade que deseja movimentar e escolha a opção de movimento, adicionar ou remover.</p>
+<p>Controle de estoque: na página inicial possui um campo de controle de estoque, selecione o produto que deseja utilizar ou adicionar ao estoque, assim que selecionado, o sistema informa a quantidade em estoque e a unidade de medida, insira a quantidade que deseja movimentar e escolha a opção de movimento, alterar a quantidade ou remover.</p>
 
 <p>Estoque total: na página inicial clique em mostrar estoque, o sistema irá mostrar um gráfico representando os produtos com menor quantidade disponível em estoque e uma tabela com todos os itens em estoque e sua estipulada quantidade.</p>
 
